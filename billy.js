@@ -12,8 +12,7 @@ export function setupCounter(element) {
   const setCounter = value => {
     counter = adjustCounterValue(value);
     //TIP WebStorm has lots of inspections to help you catch issues in your project. It also has quick fixes to help you resolve them. Press <shortcut actionId="ShowIntentionActions"/> on <shortcut raw="text"/> and choose <b>Inline variable</b> to clean up the redundant code.
-    const text = `${counter}`;
-    element.innerHTML = text;
+    element.innerHTML = `${counter}`;
   };
 
   document.getElementById('increaseByOne').addEventListener('click', () => setCounter(counter + 1));
@@ -22,7 +21,7 @@ export function setupCounter(element) {
   //TIP In the app running in the browser, you’ll find that clicking <b>-2</b> doesn't work. To fix that, rewrite it using the code from lines 19 - 21 as examples of the logic.
   document.getElementById('decreaseByTwo').addEventListener('click', () => setCounter(counter - 2));
 
-  //TIP Let’s see how to review and commit your changes. Press <shortcut actionId="GotoAction"/> and look for <b>commit</b>. Try checking the diff for a file – double-click main.js to do that.
+  //TIP Let’s see how to review and commit your changes. Press <shortcut actionId="GotoAction"/> and look for <b>commit</b>. Try checking the diff for a file – double-click billy.js to do that.
   setCounter(0);
 }
 

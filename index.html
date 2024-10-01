@@ -1,13 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des élèves</title>
+</head>
+<body>
+    <h1>Liste des élèves qui ont la main lever</h1>
+
+    <form id="form-ajout">
+        <input type="text" id="item" placeholder="Nom de l'élève">
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <ul id="liste-epicerie">
+        <!-- La liste des éléments sera ici -->
+    </ul>
+
+    <script>
+        // Ajouter un élément
+        document.getElementById('form-ajout').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let item = document.getElementById('item').value;
+
+            fetch('/ajouter', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({item: item})
+            }).then(response => response.json())
+            .then(data => {
+                console.log(data);
+                afficherListe();
+            });
+        });
+
+        // Afficher la liste des éléments
+        function afficherListe() {
+            fetch('/liste')
+            .then(response => response.json())
+            .then(data => {
+                let liste = document.getElementById('liste-epicerie');
+                liste.innerHTML = '';
+                data.forEach(function(item) {
+                    let li = document.createElement('li');
+                    li.textContent = item;
+                    liste.appendChild(li);
+                });
+            });
+        }
+
+        // Charger la liste au démarrage
+        afficherListe();
+    </script>
+</body>
 </html>

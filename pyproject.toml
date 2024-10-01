@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "url-the-dev-game"
+version = "0.1.0"
+description = ""
+authors = ["g2k4yh6p1-admin <g2k4yh6p1@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+Flask = "^3.0.3"
+reflex = "^0.5.9"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
